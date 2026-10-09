@@ -1,0 +1,18 @@
+name: ASZTAL V1 ellenorzes
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: node --check app.js
+      - name: Check required files
+        run: test -s index.html && test -s styles.css && test -s manifest.webmanifest && test -s icon.svg
