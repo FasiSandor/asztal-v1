@@ -12,3 +12,16 @@ body.light{--glass-edge:#CAD2DE;--glass-shadow:0 12px 30px #1C335016, inset 0 1p
 .group .item{margin:8px 0;background:var(--card2)}
 @media(min-width:681px){.sheet{max-width:680px}.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){.main{padding-top:22px}.item{padding:11px 10px;gap:8px}.item .btn{font-size:12px;padding:10px}.itembody strong{font-size:13px}.itembody small{font-size:11px}.group{padding:12px}.btn{max-width:100%}}
+
+/* ASZTAL V1 — Claude Üveg account modal */
+.auth-overlay{position:fixed;inset:0;z-index:100;background:#020509c9;backdrop-filter:blur(15px);display:flex;align-items:center;justify-content:center;padding:18px}
+.auth-glass{width:min(420px,100%);max-height:94dvh;overflow-y:auto;position:relative;padding:30px;background:linear-gradient(145deg,color-mix(in srgb,var(--card) 95%,#355cb0),var(--card));border:1px solid #8196bb55;box-shadow:0 28px 75px #0009,inset 0 1px 0 #ffffff35;border-radius:26px}
+.auth-glyph{width:54px;height:54px;border-radius:17px;background:linear-gradient(125deg,#2563eb,#8b5cf6);display:grid;place-items:center;font-size:30px;color:#fff;margin-bottom:20px;box-shadow:0 7px 25px #3458b866}
+.auth-glass h2{font-size:30px;letter-spacing:-.035em;margin:5px 0}.auth-glass .muted-text{margin-bottom:22px}
+.auth-glass .field{font-weight:650;color:var(--fg);font-size:13px}.auth-glass input{font-size:16px!important;background:var(--card2);padding:14px 13px}
+.auth-glass .auth-submit{width:100%;margin-top:10px;padding:14px;font-size:15px}
+.auth-switch{width:100%;margin-top:19px;color:var(--link);border:0;background:none;font-weight:700;padding:9px}
+.auth-foot{color:var(--faint);font-size:11px;text-align:center;line-height:1.5;margin-top:17px}
+.auth-close{position:absolute;right:18px;top:14px;border:0;background:var(--card2);color:var(--muted);font-size:27px;border-radius:12px;width:39px;height:39px}
+#v1-auth-error{font-size:13px;color:var(--danger);line-height:1.45;min-height:0}
+@media(max-width:600px){.auth-glass{padding:24px 19px;border-radius:21px}.auth-glass h2{font-size:25px}}
