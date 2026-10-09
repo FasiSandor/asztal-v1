@@ -19,7 +19,7 @@ jobs:
       - name: Build cloud client
         run: npm run build
       - name: Verify sync Vercel function output
-        run: test -s .vercel/output/functions/api/sync.func/index.mjs && test -s .vercel/output/functions/api/sync.func/.vc-config.json && test -s .vercel/output/static/cloud.js
+        run: node -e "const fs=require('fs');const c=JSON.parse(fs.readFileSync('.vercel/output/config.json'));if(!c.routes?.some(r=>r.src?.includes('/api/sync')))process.exit(1)" && test -s .vercel/output/functions/api/sync.func/index.mjs && test -s .vercel/output/functions/api/sync.func/.vc-config.json && test -s .vercel/output/static/cloud.js
       - name: Check JavaScript syntax
         run: node --check app.js
       - name: Test Safari bookmark parser
