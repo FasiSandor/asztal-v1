@@ -1,1 +1,13 @@
-import {mkdir,copyFile,writeFile,rm} from 'node:fs/promises';import {build} from 'esbuild';const root='.vercel/output';await rm(root,{recursive:true,force:true});await mkdir(root+'/static',{recursive:true});await mkdir(root+'/functions/api/sync.func',{recursive:true});for(const x of ['index.html','app.js','styles.css','icon.svg','manifest.webmanifest'])await copyFile(x,root+'/static/'+x);await build({entryPoints:['cloud-client.js'],bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:root+'/static/cloud.js',minify:true});await build({entryPoints:['api/sync.js'],bundle:true,format:'esm',platform:'node',target:'node22',packages:'bundle',outfile:root+'/functions/api/sync.func/index.mjs',minify:true});await writeFile(root+'/functions/api/sync.func/.vc-config.json',JSON.stringify({runtime:'nodejs22.x',handler:'index.mjs',launcherType:'Nodejs',shouldAddHelpers:true}));await writeFile(root+'/config.json',JSON.stringify({version:3,routes:[{src:'^/api/sync/?);console.log('ASZTAL V1 Build Output API: static + /api/sync function OK');,dest:'/api/sync'},{handle:'filesystem'}]}));console.log('ASZTAL V1 Build Output API: static + /api/sync function OK');
+import {mkdir,copyFile,writeFile,rm} from 'node:fs/promises';
+import {build} from 'esbuild';
+const root='.vercel/output';
+await rm(root,{recursive:true,force:true});
+await mkdir(root+'/static',{recursive:true});
+await mkdir(root+'/functions/api/sync.func',{recursive:true});
+for(const x of ['index.html','app.js','styles.css','icon.svg','manifest.webmanifest']) await copyFile(x,root+'/static/'+x);
+await build({entryPoints:['cloud-client.js'],bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:root+'/static/cloud.js',minify:true});
+await build({entryPoints:['api/sync.js'],bundle:true,format:'esm',platform:'node',target:'node22',packages:'bundle',outfile:root+'/functions/api/sync.func/index.mjs',minify:true});
+await writeFile(root+'/functions/api/sync.func/.vc-config.json',JSON.stringify({runtime:'nodejs22.x',handler:'index.mjs',launcherType:'Nodejs',shouldAddHelpers:true}));
+const routes=[{src:'^/api/sync/?$',dest:'/api/sync'},{handle:'filesystem'}];
+await writeFile(root+'/config.json',JSON.stringify({version:3,routes}));
+console.log('ASZTAL V1: Vercel API route and cloud client output built');
