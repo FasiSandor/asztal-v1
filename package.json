@@ -8,7 +8,7 @@
     "test": "node --check app.js && node tests/safari-import.test.cjs && node --check api/sync.js && node --check cloud-client.js"
   },
   "dependencies": {
-    "@neondatabase/auth": "^0.2.0",
+    "@neondatabase/auth": "0.5.0-beta",
     "@neondatabase/serverless": "^1.0.0",
     "jose": "^6.1.0"
   },
