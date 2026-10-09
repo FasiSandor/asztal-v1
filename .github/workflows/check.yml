@@ -18,6 +18,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build cloud client
         run: npm run build
+      - name: Verify sync Vercel function output
+        run: test -s .vercel/output/functions/api/sync.func/index.mjs && test -s .vercel/output/functions/api/sync.func/.vc-config.json && test -s .vercel/output/static/cloud.js
       - name: Check JavaScript syntax
         run: node --check app.js
       - name: Test Safari bookmark parser
