@@ -1,0 +1,18 @@
+{
+  "name": "asztal-v1",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --check app.js && node tests/safari-import.test.cjs && node --check api/sync.js && node --check cloud-client.js"
+  },
+  "dependencies": {
+    "@neondatabase/auth": "^0.2.0",
+    "@neondatabase/serverless": "^1.0.0",
+    "jose": "^6.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
